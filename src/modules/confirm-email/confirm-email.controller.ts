@@ -37,14 +37,14 @@ export class ConfirmEmailController {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'hy6ikvto@gmail.com',
-        pass: 'Z18SPXQtELHh',
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
       },
     });
     const rand = this.confirmEmailService.getRandomNumber(100000, 999999);
 
     const mailOptions = {
-      from: 'hy6ikvto@gmail.com',
+      from: process.env.EMAIL,
       to: body.email,
       subject: 'Подтверждение регистрации',
       text: `Ваш код подтверждения: ${rand}`,
